@@ -11,8 +11,6 @@ import tensorflow.python.keras.backend as K
 import random
 
 
-
-
 def read_midi(file):
 	"""
 	a method to read a midi file into numpy array
@@ -20,10 +18,8 @@ def read_midi(file):
 	:return: numpy array representing the midi file
 	"""
 	print("Loading Music File:", file)
-
 	notes = []
 	notes_to_parse = None
-
 	# parsing a midi file
 	midi = converter.parse(file)
 	# grouping based on different instruments
@@ -181,7 +177,7 @@ def convert_to_midi(prediction_output):
 
 		# pattern is a chord
 		pattern = str(pattern)
-		if ('.' in pattern) or pattern.isdigit():
+		if '.' in pattern or pattern.isdigit():
 			notes_in_chord = pattern.split('.')
 			notes = []
 			for current_note in notes_in_chord:
@@ -206,7 +202,6 @@ def convert_to_midi(prediction_output):
 		offset += 1
 	midi_stream = stream.Stream(output_notes)
 	midi_stream.write('midi', fp='music.mid')
-
 
 
 if __name__ == '__main__':
